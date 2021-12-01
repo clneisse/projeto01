@@ -5,10 +5,10 @@ using UStart.Domain.Commands;
 
 namespace UStart.Domain.Entities
 {
-    public class Orcamento
+    public class Caixa
     {
         public Guid Id { get; private set; }
-        public DateTime DataOrcamento { get; private set; }
+        public DateTime DataCaixa { get; private set; }
         public Guid ResponsavelId { get; private set; }
         public Responsavel Responsavel { get; private set; }        
         public Guid UsuarioId { get; private set; }
@@ -22,11 +22,11 @@ namespace UStart.Domain.Entities
         public Decimal TotalDesconto { get; private set; }
         public Decimal TotalProdutos { get; private set; }
 
-        public Orcamento()
+        public Caixa()
         {            
         }
 
-        public Orcamento(OrcamentoCommand command)
+        public Caixa(CaixaCommand command)
         {
             Id = command.Id == Guid.Empty ? Guid.NewGuid() : command.Id;      
 
@@ -36,13 +36,13 @@ namespace UStart.Domain.Entities
             // }
 
             this.Itens = command.Itens
-                .Select(itemCmd => new OrcamentoItem(itemCmd))
+                .Select(itemCmd => new CaixaItem(itemCmd))
                 .ToList();    
 
             AtualizarCampos(command);
         }
 
-        public void Update(OrcamentoCommand command)
+        public void Update(CaixaCommand command)
         {
             //Remover os items da entidade que não vierem no command
             var itensParaExcluir = this.Itens
@@ -75,18 +75,18 @@ namespace UStart.Domain.Entities
             foreach (var itemCmd in itensParaAdicionar)
             {                            
                 itemCmd.Id = Guid.Empty;    
-                this.Itens.Add(new OrcamentoItem(itemCmd));
+                this.Itens.Add(new CaixaItem(itemCmd));
             }
 
             //Atualiza os campos da entidade e totais
             AtualizarCampos(command);
         }
 
-        private void AtualizarCampos(OrcamentoCommand command)
+        private void AtualizarCampos(CaixaCommand command)
         {
             this.Id = command.Id;                    
-            this.DataOrcamento = command.DataOrcamento;                    
-            this.ResponsavelId = command.responsavelId;                                
+            this.DataCaixa = command.DataCaixa;                    
+            this.ResponsavelId = command.ResponsavelId;                                
             this.UsuarioId = command.UsuarioId.HasValue ? command.UsuarioId.Value : Guid.Empty;                    
             this.FormaPagamentoId = command.FormaPagamentoId;    
             
