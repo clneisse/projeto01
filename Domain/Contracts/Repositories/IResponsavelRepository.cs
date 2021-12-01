@@ -11,6 +11,6 @@ namespace UStart.Domain.Contracts.Repositories
         void Delete(Responsavel Responsavel);
         IEnumerable<Responsavel> Pesquisar(string pesquisa);
         IEnumerable<Responsavel> RetornarTodos();
-        void Update(Reponsavel Responsavel);
+        void Update(Responsavel Responsavel);
     }
 }
