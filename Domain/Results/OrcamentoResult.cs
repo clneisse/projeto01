@@ -9,8 +9,8 @@ namespace UStart.Domain.Results
     {
         public Guid Id { get; set; }
         public DateTime DataOrcamento { get; set; }
-        public Guid ClienteId { get; set; }
-        public Cliente Cliente { get; set; }
+        public Guid ResponsavelId { get; set; }
+        public Responsavel Responsavel { get; set; }
         public Guid UsuarioId { get; set; }
         public UsuarioResult Usuario { get; set; }
         public Guid FormaPagamentoId { get; set; }
@@ -31,8 +31,8 @@ namespace UStart.Domain.Results
 
             this.Id = orcamento.Id;
             this.DataOrcamento = orcamento.DataOrcamento;
-            this.ClienteId = orcamento.ClienteId;
-            this.Cliente = orcamento.Cliente;
+            this.ResponsavelId = orcamento.ResponsavelId;
+            this.Responsavel = orcamento.Responsavel;
             this.UsuarioId = orcamento.UsuarioId;
             this.Usuario = new UsuarioResult(orcamento.Usuario);
             this.FormaPagamentoId = orcamento.FormaPagamentoId;

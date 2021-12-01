@@ -30,7 +30,7 @@ namespace UStart.Infrastructure.Repositories
         {
             Orcamento orcamento = _context
                 .Orcamentos
-                .Include(c => c.Cliente)
+                .Include(c => c.Responsavel)
                 .Include(u => u.Usuario)
                 .Include(f => f.FormaPagamento)
                 .Include(i => i.Itens)
@@ -73,9 +73,9 @@ namespace UStart.Infrastructure.Repositories
             pesquisa = pesquisa != null ? pesquisa.ToLower() : "";
             return _context
             .Orcamentos
-            .Include(c => c.Cliente)
+            .Include(c => c.Responsavel)
             .Include(f => f.FormaPagamento)
-            .Where(x => x.Cliente.Nome.ToLower().Contains(pesquisa))
+            .Where(x => x.Responsavel.Nome.ToLower().Contains(pesquisa))
             .Select(o => new OrcamentoResult(o))
             .ToList();
         }

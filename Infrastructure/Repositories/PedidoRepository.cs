@@ -55,7 +55,7 @@ namespace UStart.Infrastructure.Repositories
             pesquisa = pesquisa != null ?  pesquisa.ToLower() : "";
             return _context
             .Pedidos
-            .Where(x => x.Cliente.Nome.ToLower().Contains(pesquisa))
+            .Where(x => x.Responsavel.Nome.ToLower().Contains(pesquisa))
             .ToList();
         }
     }

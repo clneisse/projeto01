@@ -117,7 +117,8 @@ namespace UStart.API
 
         public static void RegisterRepositories(IServiceCollection services)
         {            
-            services.AddTransient<IClienteRepository, ClienteRepository>();
+            services.AddTransient<IResponsavelRepository, ResponsavelRepository>();
+            services.AddTransient<IFornecedorRepository, FornecedorRepository>();
             services.AddTransient<IFormaPagamentoRepository, FormaPagamentoRepository>();
             services.AddTransient<IGrupoProdutoRepository, GrupoProdutoRepository>();
             services.AddTransient<IOrcamentoItemRepository, OrcamentoItemRepository>();
@@ -130,7 +131,8 @@ namespace UStart.API
 
         public static void RegisterWorkflows(IServiceCollection services)
         {            
-            services.AddTransient<ClienteWorkflow>();
+            services.AddTransient<ResponsavelWorkflow>();
+            services.AddTransient<FornecedorWorkflow>();
             services.AddTransient<FormaPagamentoWorkflow>();
             services.AddTransient<GrupoProdutoWorkflow>();
             services.AddTransient<OrcamentoWorkflow>();

@@ -9,8 +9,8 @@ namespace UStart.Domain.Entities
     {
         public Guid Id { get; private set; }
         public DateTime DataOrcamento { get; private set; }
-        public Guid ClienteId { get; private set; }
-        public Cliente Cliente { get; private set; }        
+        public Guid ResponsavelId { get; private set; }
+        public Responsavel Responsavel { get; private set; }        
         public Guid UsuarioId { get; private set; }
         public Usuario Usuario { get; private set; }
         public Guid FormaPagamentoId { get; private set; }
@@ -86,7 +86,7 @@ namespace UStart.Domain.Entities
         {
             this.Id = command.Id;                    
             this.DataOrcamento = command.DataOrcamento;                    
-            this.ClienteId = command.ClienteId;                                
+            this.ResponsavelId = command.responsavelId;                                
             this.UsuarioId = command.UsuarioId.HasValue ? command.UsuarioId.Value : Guid.Empty;                    
             this.FormaPagamentoId = command.FormaPagamentoId;    
             

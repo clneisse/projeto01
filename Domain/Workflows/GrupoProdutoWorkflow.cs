@@ -28,11 +28,11 @@ namespace UStart.Domain.Workflows
 
         public void Update(Guid id, GrupoProdutoCommand command)
         {
-            var contaCliente = _grupoProdutoRepository.ConsultarPorId(id);
-            if (contaCliente != null)
+            var contaResponsavel = _grupoProdutoRepository.ConsultarPorId(id);
+            if (contaResponsavel != null)
             {
-                contaCliente.Update(command);
-                _grupoProdutoRepository.Update(contaCliente);
+                contaResponsavel.Update(command);
+                _grupoProdutoRepository.Update(contaResponsavel);
                 _unitOfWork.Commit();
             }
             else

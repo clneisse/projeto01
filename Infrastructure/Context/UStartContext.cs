@@ -21,7 +21,8 @@ namespace UStart.Infrastructure.Context
             base.OnConfiguring(optionsBuilder);
         }
 
-        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Responsavel> Responsaveis { get; set; }
+        public DbSet<Fornecedor> Fornecedores { get; set; }
         public DbSet<FormaPagamento> FormasPagamentos { get; set; }        
         public DbSet<GrupoProduto> GrupoProdutos { get; set; }
         public DbSet<Orcamento> Orcamentos { get; set; }

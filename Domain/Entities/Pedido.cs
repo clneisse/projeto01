@@ -9,8 +9,8 @@ namespace UStart.Domain.Entities
     {
         public Guid Id { get; private set; }
         public DateTime DataPedido { get; private set; }
-        public Guid ClienteId { get; private set; }
-        public Cliente Cliente { get; private set; }
+        public Guid ResponsavelId { get; private set; }
+        public Responsavel Responsavel { get; private set; }
         public Guid UsuarioId { get; private set; }
         public Usuario Usuario { get; private set; }
         public Guid FormaPagamentoId { get; private set; }
@@ -81,7 +81,7 @@ namespace UStart.Domain.Entities
         {
             this.Id = command.Id;                    
             this.DataPedido = command.DataPedido;                    
-            this.ClienteId = command.ClienteId;                    
+            this.ResponsavelId = command.ResponsavelId;                    
             this.UsuarioId = command.UsuarioId;                    
             this.FormaPagamentoId = command.FormaPagamentoId;    
             
