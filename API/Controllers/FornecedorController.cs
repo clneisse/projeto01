@@ -12,18 +12,18 @@ namespace UStart.API.Controllers
     /// </summary>
     [ApiController]
     [ApiVersion("1.0")]
-    [Route("api/v{version:apiVersion}/cliente")]
+    [Route("api/v{version:apiVersion}/fornecedor")]
     [Authorize]
-    public class ClienteController : ControllerBase
+    public class FornecedorController : ControllerBase
     {
-        private readonly IClienteRepository _clienteRepository;
-        private readonly ClienteWorkflow _clienteWorkflow;
-        public ClienteController(
-            IClienteRepository clienteRepository, 
-            ClienteWorkflow clienteWorkflow)
+        private readonly IFornecedorRepository _fornecedorRepository;
+        private readonly FornecedorWorkflow _fornecedorWorkflow;
+        public FornecedorController(
+            IFornecedorRepository fornecedorRepository, 
+            FornecedorWorkflow fornecedorWorkflow)
         {
-            _clienteRepository = clienteRepository;
-            _clienteWorkflow = clienteWorkflow;
+            _fornecedorRepository = fornecedorRepository;
+            _fornecedorWorkflow = fornecedorWorkflow;
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace UStart.API.Controllers
         [HttpGet]        
         public IActionResult Get()
         {
-            return Ok(_clienteRepository.RetornarTodos());
+            return Ok(_fornecedorRepository.RetornarTodos());
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace UStart.API.Controllers
         [Route("{id}")]    
         public IActionResult GetPorId([FromRoute] Guid id)
         {
-            return Ok(_clienteRepository.ConsultarPorId(id));
+            return Ok(_fornecedorRepository.ConsultarPorId(id));
         }
 
         /// <summary>
@@ -54,14 +54,14 @@ namespace UStart.API.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost]            
-        public IActionResult Adicionar([FromBody] ClienteCommand command)
+        public IActionResult Adicionar([FromBody] FornecedorCommand command)
         {
-            _clienteWorkflow.Add(command);
-            if (_clienteWorkflow.IsValid())
+            _fornecedorWorkflow.Add(command);
+            if (_fornecedorWorkflow.IsValid())
             {
                 return Ok();
             }
-            return BadRequest(_clienteWorkflow.GetErrors());
+            return BadRequest(_fornecedorWorkflow.GetErrors());
         }
 
         /// <summary>
@@ -72,14 +72,14 @@ namespace UStart.API.Controllers
         /// <returns></returns>
         [HttpPut] 
         [Route("{id}")]           
-        public IActionResult Atualizar([FromRoute] Guid id, [FromBody] ClienteCommand command)
+        public IActionResult Atualizar([FromRoute] Guid id, [FromBody] FornecedorCommand command)
         {
-            _clienteWorkflow.Update(id, command);
-            if (_clienteWorkflow.IsValid())
+            _fornecedorWorkflow.Update(id, command);
+            if (_fornecedorWorkflow.IsValid())
             {
                 return Ok();
             }
-            return BadRequest(_clienteWorkflow.GetErrors());
+            return BadRequest(_fornecedorWorkflow.GetErrors());
         }
 
         /// <summary>
@@ -90,12 +90,12 @@ namespace UStart.API.Controllers
         [HttpDelete("{id}")]            
         public IActionResult Deletar([FromRoute] Guid id)
         {
-            _clienteWorkflow.Delete(id);
-            if (_clienteWorkflow.IsValid())
+            _fornecedorWorkflow.Delete(id);
+            if (_fornecedorWorkflow.IsValid())
             {
                 return Ok();
             }
-            return BadRequest(_clienteWorkflow.GetErrors());
+            return BadRequest(_fornecedorWorkflow.GetErrors());
         }
 
 

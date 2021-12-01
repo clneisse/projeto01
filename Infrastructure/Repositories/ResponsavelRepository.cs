@@ -10,51 +10,51 @@ using UStart.Infrastructure.Context;
 
 namespace UStart.Infrastructure.Repositories
 {
-    public class ClienteRepository : IClienteRepository
+    public class ResponsavelRepository : IResponsavelRepository
     {
         private readonly UStartContext _context;
 
-        public ClienteRepository(UStartContext context)
+        public ResponsavelRepository(UStartContext context)
         {
             _context = context;
         }
 
-        public Cliente ConsultarPorId(Guid id)
+        public Responsavel ConsultarPorId(Guid id)
         {
-            return _context.Clientes
+            return _context.Responsaveis
                 .FirstOrDefault(u => u.Id == id);
         }
 
-        public void Add(Cliente Cliente)
+        public void Add(Responsavel Responsavel)
         {
-            _context.Clientes.Add(Cliente);
+            _context.Responsaveis.Add(Responsavel);
         }
 
-        public void Update(Cliente Cliente)
+        public void Update(Responsavel Responsavel)
         {
-            _context.Clientes.Update(Cliente);
+            _context.Responsaveis.Update(Responsavel);
         }
 
-        public virtual void Delete(Cliente Cliente)
+        public virtual void Delete(Responsavel Responsavel)
         {
-            if (_context.Entry(Cliente).State == EntityState.Detached)
+            if (_context.Entry(Responsavel).State == EntityState.Detached)
             {
-                _context.Clientes.Attach(Cliente);
+                _context.Responsaveis.Attach(Responsavel);
             }
-            _context.Clientes.Remove(Cliente);
+            _context.Responsaveis.Remove(Responsavel);
         }
 
-        public IEnumerable<Cliente> RetornarTodos()
+        public IEnumerable<Responsavel> RetornarTodos()
         {
             return _context
-                .Clientes                
+                .Responsaveis                
                 .ToList();
         }
-        public IEnumerable<Cliente> Pesquisar(string pesquisa)
+        public IEnumerable<Responsavel> Pesquisar(string pesquisa)
         {
             pesquisa = pesquisa != null ?  pesquisa.ToLower() : "";
             return _context
-            .Clientes
+            .Responsaveis
             .Where(x => x.Nome.ToLower().Contains(pesquisa))
             .ToList();
         }
