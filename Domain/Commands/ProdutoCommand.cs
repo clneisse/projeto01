@@ -6,6 +6,7 @@ namespace UStart.Domain.Commands
     {
         public Guid Id { get; set; }
         public Guid GrupoProdutoId { get; set; }
+        public Guid FornecedorId { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }        
         public decimal Preco { get; set; }

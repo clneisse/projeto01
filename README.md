@@ -25,9 +25,9 @@ Como criar as migrations
 ```bash
 cd API
 
-#dotnet ef migrations add usuarios -c UStartContext --project ../Infrastructure/Infrastructure.csproj
+dotnet ef migrations add usuarios -c UStartContext --project ../Infrastructure/Infrastructure.csproj
 
-#dotnet ef migrations add usuarios_nome -c UStartContext --project ../Infrastructure/Infrastructure.csproj
+dotnet ef migrations add usuarios_nome -c UStartContext --project ../Infrastructure/Infrastructure.csproj
 
 dotnet ef migrations add grupos_produtos -c UStartContext --project ../Infrastructure/Infrastructure.csproj
 
