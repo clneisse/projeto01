@@ -16,7 +16,7 @@ namespace UStart.Domain.Entities
         public Guid FormaPagamentoId { get; private set; }
         public FormaPagamento FormaPagamento { get; private set; }
         public String Observacao { get; private set; }
-        public ICollection<OrcamentoItem> Itens { get; private set; }
+        public ICollection<CaixaItem> Itens { get; private set; }
         public Decimal QuantidadeDeItens { get; private set; }        
         public Decimal TotalItens { get; private set; }
         public Decimal TotalDesconto { get; private set; }
@@ -30,10 +30,6 @@ namespace UStart.Domain.Entities
         {
             Id = command.Id == Guid.Empty ? Guid.NewGuid() : command.Id;      
 
-            // foreach (var item in command.Itens)
-            // {
-            //     this.Itens.Add(new OrcamentoItem(item));
-            // }
 
             this.Itens = command.Itens
                 .Select(itemCmd => new CaixaItem(itemCmd))

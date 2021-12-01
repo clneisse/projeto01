@@ -8,6 +8,8 @@ public class Produto
         public Guid Id { get; private set; }
         public Guid GrupoProdutoId { get; private set; }
         public GrupoProduto GrupoProduto { get; private set; }
+         public Guid FornecedorId { get; private set; }
+        public Fornecedor Fornecedor { get; private set; }
         public string Nome { get; private set; }
         public string Descricao { get; private set; }        
         public decimal Preco { get; private set; }        
