@@ -2,7 +2,7 @@
 
 namespace UStart.Infrastructure.Migrations
 {
-    public partial class fornecedor_estado_id : Migration
+    public partial class responsaveis : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
