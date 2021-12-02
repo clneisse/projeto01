@@ -10,6 +10,9 @@ namespace UStart.Domain.Entities
         public Caixa Caixa { get; private set; }
         public Guid ProdutoId { get; private set; }
         public Produto Produto { get; private set; }
+        public Guid FormaPagamentoId { get; private set; }
+        public FormaPagamento FormaPagamento { get; private set; }
+
         public String Observacao { get; private set; }
         public Decimal Quantidade { get; private set; }
         public Decimal PrecoUnitario { get; private set; }
@@ -37,7 +40,8 @@ namespace UStart.Domain.Entities
         {
             this.Id = command.Id;                    
             this.CaixaId = command.CaixaId;                    
-            this.ProdutoId = command.ProdutoId;                    
+            this.ProdutoId = command.ProdutoId;    
+            this.FormaPagamentoId = command.FormaPagamentoId;                    
             this.Observacao = command.Observacao;                    
             this.Quantidade = command.Quantidade;                    
             this.PrecoUnitario = command.PrecoUnitario;                    

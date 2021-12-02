@@ -32,7 +32,6 @@ namespace UStart.Infrastructure.Repositories
                 .Caixas
                 .Include(c => c.Responsavel)
                 .Include(u => u.Usuario)
-                .Include(f => f.FormaPagamento)
                 .Include(i => i.Itens)
                     .ThenInclude(p => p.Produto)                    
                 .FirstOrDefault(u => u.Id == id);
@@ -74,7 +73,6 @@ namespace UStart.Infrastructure.Repositories
             return _context
             .Caixas
             .Include(c => c.Responsavel)
-            .Include(f => f.FormaPagamento)
             .Where(x => x.Responsavel.Nome.ToLower().Contains(pesquisa))
             .Select(o => new CaixaResult(o))
             .ToList();

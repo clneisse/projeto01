@@ -13,8 +13,6 @@ namespace UStart.Domain.Entities
         public Responsavel Responsavel { get; private set; }        
         public Guid UsuarioId { get; private set; }
         public Usuario Usuario { get; private set; }
-        public Guid FormaPagamentoId { get; private set; }
-        public FormaPagamento FormaPagamento { get; private set; }
         public String Observacao { get; private set; }
         public ICollection<CaixaItem> Itens { get; private set; }
         public Decimal QuantidadeDeItens { get; private set; }        
@@ -83,8 +81,7 @@ namespace UStart.Domain.Entities
             this.Id = command.Id;                    
             this.DataCaixa = command.DataCaixa;                    
             this.ResponsavelId = command.ResponsavelId;                                
-            this.UsuarioId = command.UsuarioId.HasValue ? command.UsuarioId.Value : Guid.Empty;                    
-            this.FormaPagamentoId = command.FormaPagamentoId;    
+            this.UsuarioId = command.UsuarioId.HasValue ? command.UsuarioId.Value : Guid.Empty;       
             
             
             //Atualizar cálculos

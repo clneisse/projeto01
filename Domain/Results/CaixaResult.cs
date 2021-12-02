@@ -13,8 +13,6 @@ namespace UStart.Domain.Results
         public Responsavel Responsavel { get; set; }
         public Guid UsuarioId { get; set; }
         public UsuarioResult Usuario { get; set; }
-        public Guid FormaPagamentoId { get; set; }
-        public FormaPagamento FormaPagamento { get; set; }
         public String Observacao { get; set; }
         public Decimal QuantidadeDeItens { get; set; }
         public Decimal TotalItens { get; set; }
@@ -35,8 +33,6 @@ namespace UStart.Domain.Results
             this.Responsavel = caixa.Responsavel;
             this.UsuarioId = caixa.UsuarioId;
             this.Usuario = new UsuarioResult(caixa.Usuario);
-            this.FormaPagamentoId = caixa.FormaPagamentoId;
-            this.FormaPagamento = caixa.FormaPagamento;
             this.Observacao = caixa.Observacao;
             this.QuantidadeDeItens = caixa.QuantidadeDeItens;
             this.TotalItens = caixa.TotalItens;

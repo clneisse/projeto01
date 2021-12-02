@@ -6,7 +6,8 @@ namespace UStart.Domain.Commands
     {
         public Guid Id { get; set; }
         public Guid CaixaId { get; set; }        
-        public Guid ProdutoId { get; set; }        
+        public Guid ProdutoId { get; set; }      
+        public Guid FormaPagamentoId { get; set; }          
         public String Observacao { get; set; }
         public Decimal Quantidade { get; set; }
         public Decimal PrecoUnitario { get; set; }
