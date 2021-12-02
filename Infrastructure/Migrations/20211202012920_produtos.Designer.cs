@@ -11,8 +11,8 @@ using UStart.Infrastructure.Context;
 namespace UStart.Infrastructure.Migrations
 {
     [DbContext(typeof(UStartContext))]
-    [Migration("20211201204043_dominio-v1")]
-    partial class dominiov1
+    [Migration("20211202012920_produtos")]
+    partial class produtos
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
