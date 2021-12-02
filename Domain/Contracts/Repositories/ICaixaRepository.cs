@@ -15,5 +15,6 @@ namespace UStart.Domain.Contracts.Repositories
         IEnumerable<Caixa> RetornarTodos();
         void Update(Caixa Caixa);
         IEnumerable<dynamic> ConsultarTotaisCaixa(DateTime dtInicial, DateTime dtFinal);
+        object ConsultarPorId(object id);
     }
 }

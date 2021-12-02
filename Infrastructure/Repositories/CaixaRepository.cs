@@ -98,5 +98,10 @@ namespace UStart.Infrastructure.Repositories
                     totalPedidos = or.Sum(group => group.TotalProdutos)
                 });
         }
+
+        object ICaixaRepository.ConsultarPorId(object id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
