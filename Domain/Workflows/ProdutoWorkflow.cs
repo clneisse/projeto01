@@ -28,17 +28,15 @@ namespace UStart.Domain.Workflows
 
         public void Update(Guid id, ProdutoCommand command)
         {
-            var contaResponsavel = _produtoRepository.ConsultarPorId(id);
-            if (contaResponsavel != null)
-            {
-                contaResponsavel.Update(command);
-                _produtoRepository.Update(contaResponsavel);
-                _unitOfWork.Commit();
-            }
-            else
-            {
-                AddError("Produto", "Produto não encontrado", id);
-            }
+           var Produto = _produtoRepository.ConsultarPorId(id);
+                if (Produto == null)
+                {
+                    AddError("Produto", "Produto de dados não encontrado", id);
+                }
+                if (!IsValid())
+                {
+                    return;
+                }
         }
 
         public void Delete(Guid id)
