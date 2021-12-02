@@ -133,7 +133,6 @@ namespace UStart.Infrastructure.Migrations
                     data_caixa = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     responsavel_id = table.Column<Guid>(type: "uuid", nullable: false),
                     usuario_id = table.Column<Guid>(type: "uuid", nullable: false),
-                    forma_pagamento_id = table.Column<Guid>(type: "uuid", nullable: false),
                     observacao = table.Column<string>(type: "text", nullable: true),
                     quantidade_de_itens = table.Column<decimal>(type: "numeric", nullable: false),
                     total_itens = table.Column<decimal>(type: "numeric", nullable: false),
@@ -143,12 +142,6 @@ namespace UStart.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_caixas", x => x.id);
-                    table.ForeignKey(
-                        name: "fk_caixas_formas_pagamentos_forma_pagamento_id",
-                        column: x => x.forma_pagamento_id,
-                        principalTable: "formas_pagamentos",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_caixas_responsaveis_responsavel_id",
                         column: x => x.responsavel_id,
@@ -209,6 +202,7 @@ namespace UStart.Infrastructure.Migrations
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     caixa_id = table.Column<Guid>(type: "uuid", nullable: false),
                     produto_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    forma_pagamento_id = table.Column<Guid>(type: "uuid", nullable: false),
                     observacao = table.Column<string>(type: "text", nullable: true),
                     quantidade = table.Column<decimal>(type: "numeric", nullable: false),
                     preco_unitario = table.Column<decimal>(type: "numeric", nullable: false),
@@ -223,6 +217,12 @@ namespace UStart.Infrastructure.Migrations
                         name: "fk_caixas_itens_caixas_caixa_id",
                         column: x => x.caixa_id,
                         principalTable: "caixas",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "fk_caixas_itens_formas_pagamentos_forma_pagamento_id",
+                        column: x => x.forma_pagamento_id,
+                        principalTable: "formas_pagamentos",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -265,11 +265,6 @@ namespace UStart.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "ix_caixas_forma_pagamento_id",
-                table: "caixas",
-                column: "forma_pagamento_id");
-
-            migrationBuilder.CreateIndex(
                 name: "ix_caixas_responsavel_id",
                 table: "caixas",
                 column: "responsavel_id");
@@ -283,6 +278,11 @@ namespace UStart.Infrastructure.Migrations
                 name: "ix_caixas_itens_caixa_id",
                 table: "caixas_itens",
                 column: "caixa_id");
+
+            migrationBuilder.CreateIndex(
+                name: "ix_caixas_itens_forma_pagamento_id",
+                table: "caixas_itens",
+                column: "forma_pagamento_id");
 
             migrationBuilder.CreateIndex(
                 name: "ix_caixas_itens_produto_id",

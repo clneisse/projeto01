@@ -31,10 +31,6 @@ namespace UStart.Infrastructure.Migrations
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("data_caixa");
 
-                    b.Property<Guid>("FormaPagamentoId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("forma_pagamento_id");
-
                     b.Property<string>("Observacao")
                         .HasColumnType("text")
                         .HasColumnName("observacao");
@@ -66,9 +62,6 @@ namespace UStart.Infrastructure.Migrations
                     b.HasKey("Id")
                         .HasName("pk_caixas");
 
-                    b.HasIndex("FormaPagamentoId")
-                        .HasDatabaseName("ix_caixas_forma_pagamento_id");
-
                     b.HasIndex("ResponsavelId")
                         .HasDatabaseName("ix_caixas_responsavel_id");
 
@@ -92,6 +85,10 @@ namespace UStart.Infrastructure.Migrations
                     b.Property<decimal>("Desconto")
                         .HasColumnType("numeric")
                         .HasColumnName("desconto");
+
+                    b.Property<Guid>("FormaPagamentoId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("forma_pagamento_id");
 
                     b.Property<string>("Observacao")
                         .HasColumnType("text")
@@ -122,6 +119,9 @@ namespace UStart.Infrastructure.Migrations
 
                     b.HasIndex("CaixaId")
                         .HasDatabaseName("ix_caixas_itens_caixa_id");
+
+                    b.HasIndex("FormaPagamentoId")
+                        .HasDatabaseName("ix_caixas_itens_forma_pagamento_id");
 
                     b.HasIndex("ProdutoId")
                         .HasDatabaseName("ix_caixas_itens_produto_id");
@@ -484,13 +484,6 @@ namespace UStart.Infrastructure.Migrations
 
             modelBuilder.Entity("UStart.Domain.Entities.Caixa", b =>
                 {
-                    b.HasOne("UStart.Domain.Entities.FormaPagamento", "FormaPagamento")
-                        .WithMany()
-                        .HasForeignKey("FormaPagamentoId")
-                        .HasConstraintName("fk_caixas_formas_pagamentos_forma_pagamento_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("UStart.Domain.Entities.Responsavel", "Responsavel")
                         .WithMany()
                         .HasForeignKey("ResponsavelId")
@@ -504,8 +497,6 @@ namespace UStart.Infrastructure.Migrations
                         .HasConstraintName("fk_caixas_usuarios_usuario_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("FormaPagamento");
 
                     b.Navigation("Responsavel");
 
@@ -521,6 +512,13 @@ namespace UStart.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("UStart.Domain.Entities.FormaPagamento", "FormaPagamento")
+                        .WithMany()
+                        .HasForeignKey("FormaPagamentoId")
+                        .HasConstraintName("fk_caixas_itens_formas_pagamentos_forma_pagamento_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("UStart.Domain.Entities.Produto", "Produto")
                         .WithMany()
                         .HasForeignKey("ProdutoId")
@@ -529,6 +527,8 @@ namespace UStart.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Caixa");
+
+                    b.Navigation("FormaPagamento");
 
                     b.Navigation("Produto");
                 });
