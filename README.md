@@ -32,8 +32,14 @@ dotnet ef migrations add usuarios_nome -c UStartContext --project ../Infrastruct
 dotnet ef migrations add grupos_produtos -c UStartContext --project ../Infrastructure/Infrastructure.csproj
 
 dotnet ef migrations add produtos -c UStartContext --project ../Infrastructure/Infrastructure.csproj
+dotnet ef migrations add produtos_1 -c UStartContext --project ../Infrastructure/Infrastructure.csproj
+
+
+dotnet ef migrations add fornecedores -c UStartContext --project ../Infrastructure/Infrastructure.csproj
+dotnet ef migrations add responsaveis -c UStartContext --project ../Infrastructure/Infrastructure.csproj
+
 
 dotnet ef migrations add dominio-v1 -c UStartContext --project ../Infrastructure/Infrastructure.csproj
 dotnet ef migrations add dominio-v2 -c UStartContext --project ../Infrastructure/Infrastructure.csproj
-dotnet ef migrations add cliente_estado_id -c UStartContext --project ../Infrastructure/Infrastructure.csproj
+dotnet ef migrations add fornecedor_estado_id -c UStartContext --project ../Infrastructure/Infrastructure.csproj
 ```
