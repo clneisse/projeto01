@@ -23,41 +23,36 @@ namespace UStart.Domain.Workflows
 
         public void Add(CaixaCommand command)
         {
-            
+        
+        
+            if (command.UsuarioId.HasValue == false)
+            {
+                this.AddError("UsuarioId", "Não foi possível carregar o usuário, tente logar novamente.");
+            }
+
+            if (!this.IsValid())
+            {
+                return;
+            }
             var caixa = new Caixa(command);
             _caixaRepository.Add(caixa);
             _unitOfWork.Commit();
-            
+
             return;
-            
-        
-        
-            //if (command.UsuarioId.HasValue == false)
-            //{
-                //this.AddError("UsuarioId", "Não foi possível carregar o usuário, tente logar novamente.");
-            //}
-
-           // if (!this.IsValid())
-            //{
-                //return;
-            //}
-           // var caixa = new Caixa(command);
-            //_caixaRepository.Add(caixa);
-            //_unitOfWork.Commit();
-
-           // return;
         }
 
         public void Update(Guid id, CaixaCommand command)
         {
             var caixa = _caixaRepository.ConsultarPorId(id);
 
+            if (command.UsuarioId.HasValue == false)
+            {
+                this.AddError("UsuarioId", "Não foi possível carregar o usuário, tente logar novamente.");
+            }
             if (!this.IsValid())
             {
                 return;
             }
-
-
             if (caixa != null)
             {
                 caixa.Update(command);
