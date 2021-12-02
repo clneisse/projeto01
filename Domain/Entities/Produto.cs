@@ -8,7 +8,7 @@ public class Produto
         public Guid Id { get; private set; }
         public Guid GrupoProdutoId { get; private set; }
         public GrupoProduto GrupoProduto { get; private set; }
-         public Guid FornecedorId { get; private set; }
+        public Guid FornecedorId { get; private set; }
         public Fornecedor Fornecedor { get; private set; }
         public string Nome { get; private set; }
         public string Descricao { get; private set; }        
@@ -35,6 +35,7 @@ public class Produto
         {
             Descricao = command.Descricao;
             GrupoProdutoId = command.GrupoProdutoId;
+            FornecedorId = command.FornecedorId;
             Nome = command.Nome;            
             Preco = command.Preco;
             UrlImagem = command.UrlImagem;

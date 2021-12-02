@@ -49,6 +49,7 @@ namespace UStart.Infrastructure.Repositories
             return _context
                 .Produtos
                 .Include(x => x.GrupoProduto)
+                .Include(f => f.Fornecedor)
                 .ToList();
         }
         public IEnumerable<Produto> Pesquisar(string pesquisa)
