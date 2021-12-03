@@ -12,7 +12,6 @@ namespace UStart.Domain.Entities
         public Produto Produto { get; private set; }
         public Guid FormaPagamentoId { get; private set; }
         public FormaPagamento FormaPagamento { get; private set; }
-
         public String Observacao { get; private set; }
         public Decimal Quantidade { get; private set; }
         public Decimal PrecoUnitario { get; private set; }
